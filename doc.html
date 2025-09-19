@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Documents | Rollball Nashik</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      padding-top: 60px; /* space for fixed navbar */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: #f8f9fa;
+      color: #212529;
+    }
+
+      .navbar-custom {
+      background: linear-gradient(to right, #2864f1, white, #ec0b26); /* Saffron, White, Green */
+      padding: 0.5rem 1rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .navbar-custom .navbar-nav .nav-link {
+      color: #000 !important;
+      font-weight: 600;
+      margin: 0 10px;
+      transition: 0.3s ease;
+    }
+
+    .navbar-custom .navbar-nav .nav-link:hover {
+      color: #138808 !important; /* Green */
+      text-decoration: underline;
+    }
+
+    .navbar-custom .navbar-brand .brand-text {
+      color: #000;
+      font-weight: bold;
+    }
+
+    #logo {
+      height: 40px;
+      width: 40px;
+      background-image: url('logo.jpeg'); 
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 5px;
+    }
+    .RBFI{
+      background-image: url(RBFI.png);
+      width: 33px;
+      height: 35px;
+      left: 0px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 50%;
+    }
+    .MRBA{
+      background-image: url(MRBA.png);
+      width: 35px;
+      height: 35px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 50%;
+    }
+
+    @media (max-width: 767px) {
+    body {
+    padding-top: 60px; /* Slightly less on mobile */
+      }
+    }
+    /* Navbar Brand (Logo + Text) */
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .document-table .row {
+      padding: 10px 0;
+      align-items: center;
+    }
+
+    .document-table .row:not(:first-child):hover {
+      background-color: #f9f9f9;
+    }
+
+    .document-table .header {
+      font-weight: bold;
+      border-bottom: 2px solid #4E5F93;
+    }
+
+    .btn-view {
+      background-color: #4E5F93;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .btn-view:hover {
+      background-color: #3b4b75;
+    }
+    h2{
+      text-align: center;
+    }
+       /* Footer */
+    footer {
+      background: linear-gradient(to top, #2864f1, white, #ec0b26);
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 3rem;
+      width: 100%;
+      border: 1px solid black;
+    }
+
+    .footer-menu ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-menu ul li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <div id="logo"></div>
+           <span class="brand-text ms-2">NDARA</span>
+      </a>
+      
+      <div id="extra-logos" class="d-flex flex-row align-items-center">
+        <a href="https://www.rollball.org/" target="_blank">
+         <div class="RBFI me-2"></div>
+        </a>
+        <a href="https://maharashtrarollball.org/" target="_blank">
+          <div class="MRBA me-2"></div>
+        </a>
+      </div>
+
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="doc.html">Documents</a></li>
+          <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+          <li class="nav-item"><a class="nav-link" href="gal.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Documents Section -->
+  <div class="container mt-5">
+    <h2 class="mb-4">Official Documents</h2>
+    <div class="document-table">
+
+      <!-- Header Row -->
+      <div class="row header border-bottom">
+        <div class="col-4 col-md-3">Date</div>
+        <div class="col-5 col-md-6">Title</div>
+        <div class="col-3">Document</div>
+      </div>
+
+      <!-- Document Entries -->
+      <div class="row">
+        <div class="col-4 col-md-3">01-08-2025</div>
+        <div class="col-5 col-md-6">22nd senior Maharastra State championship Form</div>
+        <div class="col-3">
+          <a href="https://drive.google.com/file/d/1fi4GNKS_Qri501Zzj5AOoGAHS5L0GOIc/view?usp=sharing" target="_blank" class="btn btn-sm btn-view">View</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4 col-md-3">01-07-2025</div>
+        <div class="col-5 col-md-6">Directorate of Sports and youth services</div>
+        <div class="col-3">
+          <a href="https://drive.google.com/file/d/1Ysi3pxTt34RK2rSyJGuHtHHpk7SLM2As/view?usp=sharing" target="_blank" class="btn btn-sm btn-view">View</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4 col-md-3">28-04-2025</div>
+        <div class="col-5 col-md-6">Rule Book</div>
+        <div class="col-3">
+          <a href="https://drive.google.com/file/d/1cHlMq5xYV5LI8pfAJrvWIdz2hNPkMKaJ/view?usp=sharing" target="_blank" class="btn btn-sm btn-view">View</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4 col-md-3">26-01-2025</div>
+        <div class="col-5 col-md-6">IRBF Brochure</div>
+        <div class="col-3">
+          <a href="https://drive.google.com/file/d/1fEZWcDKUsKh9HAoDkwwbvSagcJK0FW2Y/view?usp=sharing" target="_blank" class="btn btn-sm btn-view">View</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4 col-md-3">20-12-2024</div>
+        <div class="col-5 col-md-6">21st senior Maharastra State championship Form</div>
+        <div class="col-3">
+          <a href="https://drive.google.com/file/d/1NE9zow_-I3edhhmG-ELbRaROjSnTaV7Z/view?usp=sharing" target="_blank" class="btn btn-sm btn-view">View</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <footer>
+    <div class="container">
+      <div class="row text-center text-md-start">
+        <div class="col-md-4 col-12 mb-4">
+          <div class="title">Important Links</div>
+          <div class="footer-menu">
+            <ul>
+              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="about.html">About Us</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4 col-12 mb-4">
+          <div class="title">Development Activities</div>
+          <div class="footer-menu">
+            <ul>
+              <li><a href="coach.html">Coaching</a></li>
+              <li><a href="t&c.html">Terms & conditions</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4 col-12 mb-4">
+          <div class="title">Contact</div>
+          <div class="footer-menu">
+            <ul>
+              <li>Email:<a href="mailto:rollballnashik2002@gmail.com">:rollballnashik2002@gmail.com</a></li>
+              <li>Phone: <a href="tel:7249074416">7249074416</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        &copy; Rollball nashik. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
