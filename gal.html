@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Responsive Image Gallery</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  
+
+
+  <style>
+     html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+
+    }
+
+    body {
+      padding-top: 60px; /* space for fixed navbar */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: #f8f9fa;
+      color: #212529;
+    }
+
+      .navbar-custom {
+      background: linear-gradient(to right, #2864f1, white, #ec0b26); /* Saffron, White, Green */
+      padding: 0.5rem 1rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .navbar-custom .navbar-nav .nav-link {
+      color: #000 !important;
+      font-weight: 600;
+      margin: 0 10px;
+      transition: 0.3s ease;
+    }
+
+    .navbar-custom .navbar-nav .nav-link:hover {
+      color: #138808 !important; /* Green */
+      text-decoration: underline;
+    }
+
+    .navbar-custom .navbar-brand .brand-text {
+      color: #000;
+      font-weight: bold;
+    }
+
+    #logo {
+      height: 40px;
+      width: 40px;
+      background-image: url('logo.jpeg'); 
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 5px;
+    }
+    .RFI{
+      background-image: url(RFI.png);
+      width: 50px;
+      height: 55px;
+      left: 0px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 50%;
+    }
+    .RBFI{
+      background-image: url(RBFI.png);
+      width: 33px;
+      height: 35px;
+      left: 0px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 50%;
+    }
+    .MRBA{
+      background-image: url(MRBA.png);
+      width: 35px;
+      height: 35px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 50%;
+    }
+
+    @media (max-width: 767px) {
+    body {
+    padding-top: 60px; /* Slightly less on mobile */
+      }
+    }
+    /* Navbar Brand (Logo + Text) */
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .hero-section {
+        background-size: cover; /* For better fit on mobile */
+        padding-top: 80px;
+        min-height: auto; /* Let content dictate height */
+      }
+    }
+    body {
+     /* font-family: Arial, sans-serif;*/
+      text-align: left;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+    #top{
+      display: block;
+      text-align: center;
+      width: 100%;
+      padding-top: 20px;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .gallery img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 2px solid #ccc;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      border-color: #555;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.9);
+    }
+
+    .modal-content {
+      display: block;
+      max-width: 100vw;
+      max-height: 80vh;
+      margin: auto;
+      border-radius: 10px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: auto;
+      height: auto;
+      image-rendering: auto;
+      transform: translate(-50%, -50%);
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #ccc;
+    }
+       /* Footer */
+    footer {
+      background: linear-gradient(to top, #2864f1, white, #ec0b26);
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 3rem;
+      border: 1px solid black;
+    }
+
+    .footer-menu ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-menu ul li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+   <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <div id="logo"></div>
+           <span class="brand-text ms-2">NDARBA</span>
+      </a>
+      
+      <div id="extra-logos" class="d-flex flex-row align-items-center">
+        <a href="https://rollballindia.org/" target="_blank">
+         <div class="RBFI me-2"></div>
+        </a>
+        <a href="https://www.rollball.org/" target="_blank">
+         <div class="RFI me-2"></div>
+        </a>
+        <a href="https://maharashtrarollball.org/" target="_blank">
+          <div class="MRBA me-2"></div>
+        </a>
+      </div>
+
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" aria-current="page" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="doc.html">Documents</a></li>
+          <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+          <li class="nav-item"><a class="nav-link active" href="gal.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div style="height: 90px;"></div>
+
+  <div class="gallery">
+    <div id="top"><h2>Gallery</h2></div>
+    <img src="https://drive.google.com/thumbnail?id=1eucqwHvLqLGBTuMVXVwh3TI-_TIYUv83&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=13uodhyGsxZ-wLwYDjDfCS1Pr-6MlucKV&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1CR5C9iOrRwWnhXEj2zPpsZEcsbLpka_n&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1CszUsudoXUul3G4UT1zpCDePSajdCElg&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1gpArHhLjny96TpphxFl2DJWKNWAw8WEx&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1LyeUpUvAn_ZxHc6TVyqoLxH-auyRq9P6&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1vRKDpzLVDPlwE2Zp_BJa0AZ4ROotKkjd&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1tr18yfm0H6MtZGsiNXJjlg0-di-wrKsv&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1braqHnRyjpZa_1J5TSTrDl_CiDvFl-Ja&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1Vb3kgMu09uboLlV6OvUaNn5j4B3plz-a&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1vAAWgmCmsmi8Z1zgFwGjPhy4poSMH37q&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1Fwx5YJl0YMYCzn_CwHLiRRwXLklQyXh_&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1_u_B51cSCEaEHnTGYP_wPfdBho6YpCzG&sz=s800" data-type="image"> 
+    <img src="https://drive.google.com/thumbnail?id=1NdKxfkw0y20sJQfryvB9coCoBbWUf1qe&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1R4ZZQlV8XJlxpG4xPy4i6ZE_zuNcIene&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=16UIrWOKhKx-x7YowWEfIYmYsrn2lr56I&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1G73O5lSdEPlYbwz9paL1RDoNM782acGe&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=14ekw-NzqWZn76bfJXUWJCRMO4BWSAtNk&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1cfxFZPj7scIPskqUyfo2AMZAJeYM6WyY&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1NMKUGpBFFGu4yWiwUrmp-3Ci3YpZJfuh&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1XxhmNSCsBH-V_stJSbfb9umO4VtWSP6Y&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1-E7TDRDE6yn5aIlHBI_YYtUX_Cu2ALzs&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1FKW1i5cr0TUv8cPt9Bt1LAebUB28JFyc&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1izaMQnofHpVdRNyt07cI4p8vri25ykDL&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1NMS9k_WWO86fk5Hl8dpEMNTVqd68uHKe&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1JPQ_J8naNJNjvr6F7eU__Sqpp3KVNwrz&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1-FCbGSvQfy-8IsoFJd45rMvdJTdcCT1U&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1OlTglmUHv6ywxqKSnPNFJhIgISGa6jLs&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1CVoBuJ2mh1WuigTWVrAVMTTXnzVUZq5t&sz=s800" data-type="image">
+    <!-- Add more images here -->
+  </div>
+
+  <!-- Modal Structure -->
+  <div id="modal" class="modal" onclick="closeModal()">
+    <div id="media-container">
+      <img class="modal-content" id="modalImage">
+    </div>
+  </div>
+
+    <footer>
+    <div class="container">
+      <div class="row text-center text-md-start">
+        <div class="col-md-4 col-12 mb-4">
+          <div class="title">Important Links</div>
+          <div class="footer-menu">
+            <ul>
+              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="events.html">About Us</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4 col-12 mb-4">
+          <div class="title">Development Activities</div>
+          <div class="footer-menu">
+            <ul>
+              <li><a href="coach.html">Coaching</a></li>
+              <li><a href="t&c.html">Terms & conditions</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4 col-12 mb-4">
+          <div class="title">Contact</div>
+          <div class="footer-menu">
+           <ul>
+              <li>Email:<a href="mailto:rollballnashik2002@gmail.com">:rollballnashik2002@gmail.com</a></li>
+              <li>Phone: <a href="tel:7249074416">7249074416</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        &copy; Rollball nashik. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const modal = document.getElementById("modal");
+    const mediaContainer = document.getElementById("media-container");
+    const allMedia = Array.from(document.querySelectorAll(".gallery img"));
+    let currentIndex = 0;
+
+    allMedia.forEach((item, index) => {
+      item.setAttribute("data-index", index);
+      item.addEventListener("click", () => openModal(index));
+    });
+
+    function openModal(index) {
+      currentIndex = index;
+      modal.style.display = "block";
+      showMedia(currentIndex);
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+      mediaContainer.innerHTML = ""; // clear media
+    }
+
+    function showMedia(index) {
+      const item = allMedia[index];
+      const type = item.getAttribute("data-type");
+      mediaContainer.innerHTML = ""; // clear previous
+
+      if (type === "image") {
+        const img = document.createElement("img");
+        img.src = item.src;
+        img.className = "modal-content";
+        mediaContainer.appendChild(img);
+        setupModalInteractions(img);
+      } else if (type === "video") {
+        const video = document.createElement("video");
+        video.src = item.dataset.src;
+        video.className = "modal-content";
+        video.controls = true;
+        video.autoplay = true;
+        mediaContainer.appendChild(video);
+        setupModalInteractions(video);
+      }
+    }
+
+    // Next / Previous
+    function nextMedia() {
+      currentIndex = (currentIndex + 1) % allMedia.length;
+      showMedia(currentIndex);
+    }
+
+    function prevMedia() {
+      currentIndex = (currentIndex - 1 + allMedia.length) % allMedia.length;
+      showMedia(currentIndex);
+    }
+
+    // ESC closes modal
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeModal();
+    });
+
+    // Modal interactions (click, right-click, drag, zoom)
+    function setupModalInteractions(element) {
+      // Prevent click from closing modal
+      element.addEventListener("click", e => { e.stopPropagation(); nextMedia(); });
+
+      element.addEventListener("contextmenu", e => { e.preventDefault(); prevMedia(); });
+
+      // Zoom for images only
+      if (element.tagName === "IMG") {
+        let scale = 1;
+        element.addEventListener("wheel", e => {
+          e.preventDefault();
+          scale += e.deltaY < 0 ? 0.1 : -0.1;
+          if (scale < 1) scale = 1;
+          if (scale > 4) scale = 4;
+          element.style.transform = `translate(-50%, -50%) scale(${scale})`;
+        });
+        element.addEventListener("dblclick", () => {
+          scale = 1;
+          element.style.transform = `translate(-50%, -50%) scale(${scale})`;
+        });
+      }
+
+      // Swipe / drag support for both images and videos
+      let startX = 0, endX = 0;
+      element.addEventListener("touchstart", e => startX = e.changedTouches[0].screenX);
+      element.addEventListener("touchend", e => {
+        endX = e.changedTouches[0].screenX;
+        const diff = endX - startX;
+        if (Math.abs(diff) > 50) diff < 0 ? nextMedia() : prevMedia();
+      });
+
+      let isDragging = false, mouseStartX = 0;
+      element.addEventListener("mousedown", e => { isDragging = true; mouseStartX = e.clientX; });
+      element.addEventListener("mouseup", e => {
+        if (!isDragging) return;
+        isDragging = false;
+        let diff = e.clientX - mouseStartX;
+        if (Math.abs(diff) > 50) diff < 0 ? nextMedia() : prevMedia();
+      });
+      element.addEventListener("mouseleave", () => isDragging = false);
+    }
+
+  </script>
+
+</body>
+</html>
